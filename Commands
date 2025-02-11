@@ -1,0 +1,5 @@
+Access the Container:
+Find the Container ID or Name: docker ps
+Access the Container: docker exec -it <container_id_or_name> /bin/bash
+
+================================================================================
