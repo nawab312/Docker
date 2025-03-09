@@ -20,6 +20,10 @@ At my previous project, we were using DockerHub to store and distribute containe
 - **Using IAM-Based Authentication for Secure Access**
   - Instead of sharing DockerHub credentials, we implemented *personal access tokens (PAT)* for authentication.
   - Developers used `docker login` with PATs instead of storing passwords in CI/CD pipelines.
+  ```bash
+  docker login -u myuser -p mytoken my-private-registry.com
+  docker push my-private-registry.com/myapp:latest
+  ```
 - **Implementing Image Signing & Verification**
   - We used *Docker Content Trust (DCT)* to sign images before pushing to DockerHub.
   - This ensured that only trusted images were deployed in production.
@@ -39,6 +43,9 @@ At my previous project, we were using DockerHub to store and distribute containe
   export DB_PASSWORD
   ```
 - **Used DockerHub’s Image Scanning to detect vulnerabilities before pushing images.**
+```bash
+trivy image myrepo/myimage:latest
+```
 
 
 
