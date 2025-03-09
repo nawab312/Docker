@@ -27,18 +27,18 @@ At my previous project, we were using DockerHub to store and distribute containe
   export DOCKER_CONTENT_TRUST=1
   docker push myrepo/myimage:latest
   ```
-  - **Removing Hardcoded Secrets from Docker Images**
-    - Used AWS Secrets Manager & Environment Variables instead of storing secrets inside Dockerfile.
-    - Bad Practice (Dockerfile with secrets embedded)
-    ```bash
-    ENV DB_PASSWORD=mysecretpassword
-    ```
-    - Secure Approach (Using AWS Secrets Manager in an Entrypoint Script)
-    ```bash
-    DB_PASSWORD=$(aws secretsmanager get-secret-value --secret-id my-db-secret --query SecretString --output text)
-    export DB_PASSWORD
-    ```
-  - **Used DockerHub’s Image Scanning to detect vulnerabilities before pushing images.**
+- **Removing Hardcoded Secrets from Docker Images**
+  - Used AWS Secrets Manager & Environment Variables instead of storing secrets inside Dockerfile.
+  - Bad Practice (Dockerfile with secrets embedded)
+  ```bash
+  ENV DB_PASSWORD=mysecretpassword
+  ```
+  - Secure Approach (Using AWS Secrets Manager in an Entrypoint Script)
+  ```bash
+  DB_PASSWORD=$(aws secretsmanager get-secret-value --secret-id my-db-secret --query SecretString --output text)
+  export DB_PASSWORD
+  ```
+- **Used DockerHub’s Image Scanning to detect vulnerabilities before pushing images.**
 
 
 
