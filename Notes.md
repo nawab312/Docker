@@ -1,3 +1,6 @@
+**Docker**
+Docker is an open-source platform that allows you to automate the deployment, scaling, and management of applications inside lightweight, portable containers. Containers bundle an application with all its dependencies, such as libraries, configurations, and binaries, ensuring that it runs consistently across different environments (e.g., development, testing, production).
+
 **Dockerfile**
 - A Dockerfile is a text file containing instructions to build a Docker image.
 - It automates the process of creating Docker images by defining the application's environment, dependencies, and configurations.
