@@ -1,4 +1,5 @@
 **Docker**
+
 Docker is an open-source platform that allows you to automate the deployment, scaling, and management of applications inside lightweight, portable containers. Containers bundle an application with all its dependencies, such as libraries, configurations, and binaries, ensuring that it runs consistently across different environments (e.g., development, testing, production).
 
 **Dockerfile**
@@ -67,6 +68,8 @@ Docker is an open-source platform that allows you to automate the deployment, sc
   0 3 * * * docker system prune -a -f
   ```
 - This will clean unused Docker resources daily at 3 AM.
+
+---
 
 ### Securely Storing and Distributing Docker Images Using DockerHub ###
 
