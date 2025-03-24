@@ -1,3 +1,9 @@
+### Docker Registry & Image Management ###
+- **Pushing Images to Docker Hub (docker push)**
+- **Running a Private Docker Registry (docker run registry)**
+- **Tagging Docker Images (docker tag)**
+
+
 **Docker**
 
 Docker is an open-source platform that allows you to automate the deployment, scaling, and management of applications inside lightweight, portable containers. Containers bundle an application with all its dependencies, such as libraries, configurations, and binaries, ensuring that it runs consistently across different environments (e.g., development, testing, production).
