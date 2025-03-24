@@ -3,6 +3,7 @@
 - **Building Custom Images (docker build -t my-image .)**
 - **Multi-Stage Builds for Optimized Images**
 - **Best Practices for Writing Dockerfiles**
+- https://github.com/nawab312/Docker/blob/main/Dockerfile_Image_Creation.md
 
 ### Docker Registry & Image Management ###
 - **Pushing Images to Docker Hub (docker push)**
