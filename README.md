@@ -2,6 +2,7 @@
 - **Pushing Images to Docker Hub (docker push)**
 - **Running a Private Docker Registry (docker run registry)**
 - **Tagging Docker Images (docker tag)**
+- https://github.com/nawab312/Docker/blob/main/Docker_Registry_Image_Management.md
 
 
 **Docker**
