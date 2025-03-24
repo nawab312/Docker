@@ -1,3 +1,9 @@
+### Dockerfile & Image Creation ###
+- **Understanding Dockerfile Syntax and Instructions (FROM, RUN, CMD, COPY, EXPOSE)**
+- **Building Custom Images (docker build -t my-image .)**
+- **Multi-Stage Builds for Optimized Images**
+- **Best Practices for Writing Dockerfiles**
+
 ### Docker Registry & Image Management ###
 - **Pushing Images to Docker Hub (docker push)**
 - **Running a Private Docker Registry (docker run registry)**
