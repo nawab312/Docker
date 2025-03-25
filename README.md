@@ -41,6 +41,59 @@ When Not to Use Alpine?
 
 ![image](https://github.com/user-attachments/assets/4013ea61-b384-4b94-b2de-a049e98e034d)
 
+**CMD and ENTRYPOINT**
+- Both CMD and ENTRYPOINT define what command should run when a container starts
+- *CMD* - Default Command. Specifies a default command for the container, but it can be overridden when running the container
+  ```dockerfile
+  FROM ubuntu:latest
+  CMD ["echo", "Hello World"]
+  ```
+  ```bash
+  docker build -t prac .
+  docker run cmd_1 
+  Hello, World!
+  ```
+  ```bash
+  docker run prac ls
+  bin
+  boot
+  dev
+  etc
+  home
+  ```
+  - It overrides CMD and executes `ls` instead.
+- *ENTRYPOINT* - Mandatory Command. Defines a command that always executes, even if arguments are passed during docker run. It is mandatory in scenarios where the container should always execute a specific command, and users should not be able to override it at runtime.
+  ```dockerfile
+  FROM ubuntu:latest
+  ENTRYPOINT ["echo", "Hello World"]
+  ```
+  ```bash
+  docker build -t prac_1 .
+  docker run prac_1 
+  Hello, World!
+  ```
+  ```bash
+  docker run prac_1 ls
+  Hello, World! ls
+  ```
+  - Unlike CMD, the Command cannot be Overridden, but Arguments are appended.
+  - Override ENTRYPOINT
+    ```bash
+    docker run --entrypoint ls prac_1
+    bin
+    boot
+    dev
+    etc
+    home
+    ```
+
+**ADD and COPY**
+- Both ADD and COPY are used to copy files and directories from the host system to the Docker image. However, they have key differences in how they behave.
+  - *COPY* – Simple File Copying. COPY is a Straightforward Command that copies files or directories from the Build Context (Local System) into the container. It does not extract compressed files or support remote URLs.
+  - *ADD* – Advanced Copying. ADD does everything COPY does but with extra features:
+    - It automatically extracts .tar, .tar.gz, and .zip files.
+    - It supports remote URLs, downloading files directly from the Internet.
+
 The **docker build** command is used to create a Docker image from a Dockerfile. It processes the instructions in the Dockerfile step by step and generates a reusable image.
  ```bash
 docker build [OPTIONS] -t IMAGE_NAME[:TAG] PATH
