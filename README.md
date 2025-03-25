@@ -1,10 +1,3 @@
-### Dockerfile & Image Creation ###
-- **Understanding Dockerfile Syntax and Instructions (FROM, RUN, CMD, COPY, EXPOSE)**
-- **Building Custom Images (docker build -t my-image .)**
-- **Multi-Stage Builds for Optimized Images**
-- **Best Practices for Writing Dockerfiles**
-- https://github.com/nawab312/Docker/blob/main/Dockerfile_Image_Creation.md
-
 The **docker commit** command is used to create a new Docker image from a running or stopped container. This allows you to save changes made inside a container and reuse them later as a new image.
 ```bash
 docker commit [OPTIONS] CONTAINER_ID NEW_IMAGE_NAME[:TAG]
