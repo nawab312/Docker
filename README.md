@@ -1,3 +1,26 @@
+### Introduction to Docker ###
+**What is Docker?**
+Docker is an open-source platform that allows you to automate the deployment, scaling, and management of applications inside lightweight, portable containers. Containers bundle an application with all its dependencies, such as libraries, configurations, and binaries, ensuring that it runs consistently across different environments (e.g., development, testing, production).
+
+**Benefits of using Docker**
+- *Portability*
+  - Docker containers run the same way on any system (laptop, server, cloud).
+  - Avoids the “Works on my machine” problem.
+  - Example: A containerized app can run on AWS, Azure, GCP, or on-premises without changes.
+- *Faster Application Deployment & Scaling*
+  - Containers start in seconds, unlike VMs which take minutes.
+  - Quickly scale applications up or down using Docker Compose, Swarm, or Kubernetes.
+- *Efficient Use of System Resources*
+  - Lightweight: Uses less CPU, memory, and disk compared to VMs.
+  - Containers share the same OS kernel, reducing overhead.
+  ![image](https://github.com/user-attachments/assets/df7518ed-626e-48be-ad3a-96189cec1a5a)
+
+**Docker vs Virtual Machines (VMs)**
+
+Docker and Virtual Machines (VMs) are both used for running applications in isolated environments, but they have key differences in architecture, performance, and resource utilization.
+![image](https://github.com/user-attachments/assets/58339964-a7f6-4cdb-a16a-df9bc42e3d63)
+
+
 The **docker commit** command is used to create a new Docker image from a running or stopped container. This allows you to save changes made inside a container and reuse them later as a new image.
 ```bash
 docker commit [OPTIONS] CONTAINER_ID NEW_IMAGE_NAME[:TAG]
@@ -11,10 +34,6 @@ When to Use docker commit?
 - Creating a base image after debugging or modifying a container
 - Saving a container state before destroying it
 
-
-**Docker**
-
-Docker is an open-source platform that allows you to automate the deployment, scaling, and management of applications inside lightweight, portable containers. Containers bundle an application with all its dependencies, such as libraries, configurations, and binaries, ensuring that it runs consistently across different environments (e.g., development, testing, production).
 
 **Dockerfile**
 - A Dockerfile is a text file containing instructions to build a Docker image.
