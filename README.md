@@ -20,6 +20,17 @@ Docker is an open-source platform that allows you to automate the deployment, sc
 Docker and Virtual Machines (VMs) are both used for running applications in isolated environments, but they have key differences in architecture, performance, and resource utilization.
 ![image](https://github.com/user-attachments/assets/58339964-a7f6-4cdb-a16a-df9bc42e3d63)
 
+### Docker Images ###
+An **Alpine Image** is a lightweight, security-focused, and minimal Linux distribution designed for containers. It is based on Alpine Linux, which is known for being small, fast, and optimized for security. Key Features of Alpine Images:
+- Extremely Small Size – Typically ~5MB compared to Debian-based images (~25MB+).
+- Security Focused – Uses *musl libc* and *busybox*, reducing vulnerabilities.
+- Uses `apk` for Package Management – Alpine Package Keeper (`apk add package-name`)
+When to Use Alpine?
+- If you need a small, lightweight image (e.g., microservices, cloud deployments).
+- If your app is fully compatible with `musl libc` (some software needs `glibc`, which Alpine lacks)
+When Not to Use Alpine?
+- If your application depends on `glibc-based` libraries (e.g., some Python ML libraries).
+
 
 ### Dockerfile (Building Custom Images) ###
 **Dockerfile**
@@ -38,6 +49,38 @@ docker build [OPTIONS] -t IMAGE_NAME[:TAG] PATH
 docker build -t my-python-app .
 ```
 This will create an image named `my-python-app` from the Dockerfile in the current directory (.).
+
+**Mutli-Stage Dockerfile**
+- A multi-stage Dockerfile helps build lightweight and optimized Docker images by using multiple stages in a single Dockerfile. It allows you to:
+  - Reduce image size
+  - Improve security by removing unnecessary dependencies
+  - Keep the build and runtime environments separate
+
+```dockerfile
+# Stage 1: Build dependencies
+FROM python:3.9 AS builder
+WORKDIR /app
+
+# Install dependencies in a virtual environment
+COPY requirements.txt .
+RUN python -m venv /venv && \
+    /venv/bin/pip install --no-cache-dir -r requirements.txt
+
+# Stage 2: Final runtime image
+FROM python:3.9-alpine
+WORKDIR /app
+
+# Copy only the virtual environment from the builder stage
+COPY --from=builder /venv /venv
+COPY . .
+
+# Set the correct PATH to the virtual environment
+ENV PATH="/venv/bin:$PATH"
+
+# Run the Flask application (assuming `app.py` is the entry point)
+CMD ["python", "app.py"]
+```
+- If we did this `COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages`. Then we are copying the whole site-packages directory will result in a larger image than needed, as it could include compiled C extensions and other unnecessary files that were needed only during the build phase. To avoid this, we might want to consider using a virtual environment in the builder stage.
 
 The **docker commit** command is used to create a new Docker image from a running or stopped container. This allows you to save changes made inside a container and reuse them later as a new image.
 ```bash
