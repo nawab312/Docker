@@ -24,8 +24,7 @@ This command tells the Docker Daemon to:
 - The Docker Daemon (`dockerd`) is the core component that manages Docker objects.
 - It listens for API requests and executes commands like creating, running, and monitoring containers.
 - It interacts with
-  - Container runtime (e.g., `
-  - containerd`, `runc`) to start/stop containers.
+  - Container runtime (e.g., `containerd`, `runc`) to start/stop containers.
   - Docker Registry to fetch/store container images.
   - Storage & Networking components for data persistence and connectivity.
  
